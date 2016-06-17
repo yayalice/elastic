@@ -1451,6 +1451,13 @@ func (c *Client) ClusterStats() *ClusterStatsService {
 	return NewClusterStatsService(c)
 }
 
+// Analyze is the entry point for analyzing text.
+func (c *Client) Analyze(indices ...string) *AnalyzeService {
+	builder := NewAnalyzeService(c)
+	builder.Indices(indices...)
+	return builder
+}
+
 // NodesInfo retrieves one or more or all of the cluster nodes information.
 func (c *Client) NodesInfo() *NodesInfoService {
 	return NewNodesInfoService(c)
